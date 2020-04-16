@@ -22,10 +22,22 @@ const actions = {
     );
     commit("newAlbum", response.data);
   },
+  async deleteAlbum({ commit }, id) {
+    await axios.delete(`https://jsonplaceholder.typicode.com/albums/${id}`);
+    commit("removeAlbum", id);
+  },
+  async filterAlbums({commit},e){
+    const limit = parseInt(e.target.options[e.target.options.selectedIndex].innerText);
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?_limit=${limit}`);
+    commit("setAlbumList", response.data);
+  }
 };
+
 const mutations = {
   setAlbumList: (state, albums) => (state.albumList = albums),
   newAlbum: (state, album) => state.albumList.unshift(album),
+  removeAlbum: (state, id) =>
+    (state.albums = state.albums.filter((album) => album.id !== id)),
 };
 
 export default {

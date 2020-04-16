@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="container">
-      <addAlbum/>
+      <FilterAlbums />
+      <addAlbum />
       <AlbumList />
     </div>
   </div>
@@ -10,12 +11,14 @@
 <script>
 import AlbumList from "./components/AlbumList.vue";
 import AddAlbum from "./components/AddAlbum.vue";
+import FilterAlbums from "./components/FilterAlbums";
 
 export default {
   name: "App",
   components: {
-    AlbumList ,
+    AlbumList,
     AddAlbum,
+    FilterAlbums,
   },
 };
 </script>
