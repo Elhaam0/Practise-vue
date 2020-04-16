@@ -23,7 +23,11 @@ const actions = {
     commit("newAlbum", response.data);
   },
   async deleteAlbum({ commit }, id) {
-    await axios.delete(`https://jsonplaceholder.typicode.com/albums/${id}`);
+    
+    await axios.delete(`https://jsonplaceholder.typicode.com/albums/${id}`)
+    .then(() =>console.log("delete album " + {id}))
+    .catch((e)=>console.log(e))
+
     commit("removeAlbum", id);
   },
   async filterAlbums({commit},e){
@@ -37,7 +41,7 @@ const mutations = {
   setAlbumList: (state, albums) => (state.albumList = albums),
   newAlbum: (state, album) => state.albumList.unshift(album),
   removeAlbum: (state, id) =>
-    (state.albums = state.albums.filter((album) => album.id !== id)),
+    (state.albumList = state.albumList.filter((album) => album.id !== id)),
 };
 
 export default {

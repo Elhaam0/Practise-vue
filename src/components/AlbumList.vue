@@ -6,6 +6,8 @@
     <div class="albumlist">
       <div v-for="album in allAlbumLists" :key="album.id" class="album">
         {{ album.title }}
+       
+        <i @click="deleteAlbum(album.id)" class="fa fa-trash-o"></i>
       </div>
     </div>
   </div>
@@ -21,7 +23,7 @@ export default {
     this.fetchAlbumList();
   },
   methods:{
-    ...mapActions(['fetchAlbumList']),
+    ...mapActions(['fetchAlbumList', 'deleteAlbum']),
   }
 };
 </script>
@@ -40,5 +42,11 @@ export default {
   text-align: center;
   position:relative;
   cursor: pointer;
+}
+i{
+position:absolute;
+bottom:10px;
+right:#fff;
+cursor:position;
 }
 </style>
