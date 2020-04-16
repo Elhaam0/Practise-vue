@@ -11,7 +11,8 @@ const actions = {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/albums"
     );
-    console.log(response.data);
+
+    //console.log(response.data);
     commit("setAlbumList", response.data);
   },
   async addAlbum({ commit }, title) {
